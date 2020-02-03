@@ -128,11 +128,11 @@ nav {
 .hero-introduction {
     flex: 2 1 30rem;
     text-align: center;
-    margin-bottom: 4rem;
 }
 
 .hero-introduction p {
     padding: 5rem 10rem;
+    color: var(--gray-text);
 }
 
 .hero-introduction h2 {
@@ -142,6 +142,7 @@ nav {
 .hero-introduction a {
     padding: 2rem 8rem;
     border: 1px solid black;
+    margin-bottom: 4rem;
 }
 
 .hero-images {
@@ -166,6 +167,7 @@ nav {
     animation: plant-entrance 1.5s ease-in-out 0.5s forwards,
     plant-shake 2.5s infinite ease alternate-reverse 2s;
     transform-origin: bottom;
+    max-height: 80%;
 }
 
 
@@ -202,9 +204,24 @@ nav {
     }
 }
 
+.burger, .menu-check {
+    display: none;
+}
+
 @media screen and (max-width: 668px) {
+
+    .hero {
+        width: 100%;
+    }
+
+    .hero-introduction p {
+        padding: 5rem 3rem;
+    }
+
+    /* BURGER THING */
     .burger {
         position: relative;
+        display: block;
     }
     
     .burger span {
@@ -212,6 +229,7 @@ nav {
         margin: 0.5rem 0rem;
         display: block;
         background: var(--gray-text);
+        transition: all 0.5s ease;
     }
 
     .nav-links a {
@@ -229,10 +247,12 @@ nav {
         left: 100%;
         flex-direction: column;
         align-items: center;
+        transition: transform 1s ease;
     }
 
     .menu-check {
         position: absolute;
+        display: block;
         top: 50%;
         right: 5%;
         transform: translate(5%, -50%);
@@ -244,11 +264,22 @@ nav {
     }
 
     .menu-check:checked + .nav-links {
-        transform: translate(-100%);
+        transform: translateX(-100%);
     }
 
     .menu-check:checked ~ .burger span {
         background: white;
     }
     
+    .menu-check:checked ~ .burger span:nth-child(1) {
+        transform: rotateZ(45deg) translateY(300%);
+    }
+
+    .menu-check:checked ~ .burger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-check:checked ~ .burger span:nth-child(3) {
+        transform: rotateZ(-45deg) translateY(-300%);
+    }
 }
